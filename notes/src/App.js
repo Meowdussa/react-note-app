@@ -28,9 +28,25 @@ const App = () => {
 ]);
 
   // function to pass into another components
-  // tihs func so that addNotes can update the state - to be passed to Addnotes
+  // this func so that addNotes can update the state - to be passed to Addnotes
+
   const AddNotes = (text) =>{
-    console.log(text);
+    const date= new Date();
+    // it creates a new objects with the data that's passed on
+    const newNote = {
+      // to generate id
+      id: nanoid(),
+      // text from textarea
+      text: text,
+      // date note created
+      date: date.toLocaleDateString(),
+    }
+
+    // this creates a new array instead of updating the current array
+    // ...notes is a spread operator , to copy the current array of notes
+    // newNote is to add a new note at the add
+    const newNotes= [...notes, newNote];
+    setNotes(newNotes);
  }
 	return (
 

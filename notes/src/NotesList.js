@@ -1,7 +1,6 @@
 import Note from "./components/Note";
 import AddNotes from "./components/AddNotes";
 
-// destructure the props to get note that were passed
 // to get access to handleAddNote function by using props {handleAddNote}
 const NotesList = ({notes, handleAddNote}) =>{
     return (

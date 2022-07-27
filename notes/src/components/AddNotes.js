@@ -5,13 +5,14 @@ import {MdSave} from "react-icons/md"; // i use this to replace save button
 const AddNotes = ({handleAddNote}) => {
     const [noteText, setNoteText] = useState("");
 
-    // 
+    // to grab the data that's being passed on - for example the text
     const handleChange = (event) =>{
         setNoteText(event.target.value);
     };
 
     // to call the handleAddNote function
     const handleSaveClick = () =>{
+        if(noteText.trim())
         handleAddNote(noteText);
     }
 
