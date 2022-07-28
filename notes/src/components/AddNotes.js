@@ -5,15 +5,29 @@ import {MdSave} from "react-icons/md"; // i use this to replace save button
 const AddNotes = ({handleAddNote}) => {
     const [noteText, setNoteText] = useState("");
 
-    // to grab the data that's being passed on - for example the text
+    // to set the character limit
+    const characterLimit = 200;
+
+
+    // to grab the data that's being passed on - the new note
     const handleChange = (event) =>{
-        setNoteText(event.target.value);
+
+        // the characters are more than 0, it will skip the condition - setNoteText(event.target.value);
+        if(characterLimit - event.target.value.length >= 0){
+            setNoteText(event.target.value);
+        }
+        
     };
 
     // to call the handleAddNote function
     const handleSaveClick = () =>{
-        if(noteText.trim())
-        handleAddNote(noteText);
+        // if the text area isn't empty, then add the new note, if it is empty (means only whitespace), do nothing
+        if(noteText.trim().length>0){
+            handleAddNote(noteText);
+            // after the notes are added reset the noteText to empty
+            setNoteText("");
+        }
+        
     }
 
     return (
@@ -26,7 +40,7 @@ const AddNotes = ({handleAddNote}) => {
          ></textarea>
 
         <div className="note-footer">
-            <small>200 Remaining</small>
+            <small>{characterLimit - noteText.length} Remaining</small>
             {/* <button className="save">Save</button> */}
             <MdSave className="save" onClick={handleSaveClick}/>
         </div>

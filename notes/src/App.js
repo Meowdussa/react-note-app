@@ -48,12 +48,29 @@ const App = () => {
     const newNotes= [...notes, newNote];
     setNotes(newNotes);
  }
+
+    // accept ID as the parameter - nanoid in our note array
+   /*  const deleteNote = (id) =>{
+      // The filter function returns a new array of all elements that match the condition inside the filter array
+      const newNotes = notes.filter((note)=> note.id!==id);
+      setNotes(newNotes);
+    } */
+
+    const deleteNote = (id) => {
+      const newNotes = notes.filter((note) => note.id !== id);
+      setNotes(newNotes);
+      console.log("clicked")
+    };
 	return (
 
 		<div className="container">
 			<h1>Hello!</h1>
       {/*  pass the note variable so that noteList can render each notes - using props  */}
-			<NotesList notes={notes} handleAddNote={AddNotes}/>
+			<NotesList 
+      notes={notes} 
+      handleAddNote={AddNotes}
+      handleDeleteNote={deleteNote}
+      />
 		</div>
 	);
 };
