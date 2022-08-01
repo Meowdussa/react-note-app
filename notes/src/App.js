@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NotesList from "./NotesList";
 import { nanoid } from 'nanoid' // js ID generator
+import Search from "./components/Search";
 
 
 
@@ -17,7 +18,7 @@ const App = () => {
   },
   {
     id: nanoid(),
-    text: 'Sccond note',
+    text: 'Second note',
     date: '09/12/1985'
   },
   {
@@ -40,8 +41,9 @@ const App = () => {
       text: text,
       // date note created
       date: date.toLocaleDateString(),
+      
     }
-
+    
     // this creates a new array instead of updating the current array
     // ...notes is a spread operator , to copy the current array of notes
     // newNote is to add a new note at the add
@@ -66,6 +68,7 @@ const App = () => {
 		<div className="container">
 			<h1>Hello!</h1>
       {/*  pass the note variable so that noteList can render each notes - using props  */}
+      <Search/>
 			<NotesList 
       notes={notes} 
       handleAddNote={AddNotes}
