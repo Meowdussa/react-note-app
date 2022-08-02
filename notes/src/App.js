@@ -28,6 +28,8 @@ const App = () => {
   }
 ]);
 
+const [searchText, setSearchText] = useState('');
+
   // function to pass into another components
   // this func so that addNotes can update the state - to be passed to Addnotes
 
@@ -68,9 +70,9 @@ const App = () => {
 		<div className="container">
 			<h1>Hello!</h1>
       {/*  pass the note variable so that noteList can render each notes - using props  */}
-      <Search/>
+      <Search handleSearchNote={setSearchText}/>
 			<NotesList 
-      notes={notes} 
+      notes={notes.filter((note)=>note.text.toLowerCase().includes(searchText))} 
       handleAddNote={AddNotes}
       handleDeleteNote={deleteNote}
       />
